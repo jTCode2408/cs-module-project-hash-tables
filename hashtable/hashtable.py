@@ -22,8 +22,7 @@ class HashTable:
 
     def __init__(self, capacity):
         # Your code here
-        self.capacity = capacity
-        self.slots = [None] * capacity
+        self.capacity = [None] * capacity
 
 
     def get_num_slots(self):
@@ -37,7 +36,7 @@ class HashTable:
         Implement this.
         """
         # Your code here
-        return self.slots
+        return len(self.capacity)
         
         
 
@@ -72,7 +71,7 @@ class HashTable:
         # Your code here
         hash = 5381
         for x in key:
-            hash = (( hash << 5) + hash) + ord(key)
+            hash = (( hash << 5) + hash) + ord(x)
              
         return hash & 0xFFFFFFFF
 
@@ -83,7 +82,7 @@ class HashTable:
         between within the storage capacity of the hash table.
         """
         #return self.fnv1(key) % len(self.capacity)
-        return self.djb2(key) % self.capacity
+        return self.djb2(key) % len(self.capacity)
 
     def put(self, key, value):
         """
