@@ -22,7 +22,8 @@ class HashTable:
 
     def __init__(self, capacity):
         # Your code here
-        self.capacity = [None] * 8
+        self.capacity = capacity
+        self.slots = [None] * capacity
 
 
     def get_num_slots(self):
@@ -36,6 +37,7 @@ class HashTable:
         Implement this.
         """
         # Your code here
+        return self.slots
         
         
 
@@ -58,15 +60,7 @@ class HashTable:
         """
 
         # Your code here
-        seed = 0
-        FNV_prime = 1099511628211
-        offset_basis = 14695981039346656037
-
-        hash = offset_basis + seed
-        for char in key:
-            hash = hash * FNV_prime
-            hash = hash ^ ord(char)
-        return hash
+     
 
 
     def djb2(self, key):
@@ -88,8 +82,8 @@ class HashTable:
         Take an arbitrary key and return a valid integer index
         between within the storage capacity of the hash table.
         """
-        return self.fnv1(key) % len(self.capacity)
-        #return self.djb2(key) % self.capacity
+        #return self.fnv1(key) % len(self.capacity)
+        return self.djb2(key) % self.capacity
 
     def put(self, key, value):
         """
