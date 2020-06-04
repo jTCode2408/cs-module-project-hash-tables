@@ -7,6 +7,23 @@ class LL:
     def __init__(self):
         self.head = None
 
+    def add_to_head(self, node):
+        node.next = self.head
+        self.head =node
+
+    def get(self, value):
+        current =self.head 
+        #check for head
+        #if val is head, ret
+        #check next node if not head
+        #if not found none
+
+        while current is not None:
+            if current.value ==value:
+                return current
+            current.next
+            return None
+
 
 
 class HashTableEntry:
@@ -34,6 +51,7 @@ class HashTable:
     def __init__(self, capacity):
         # Your code here
         self.capacity = [None] * capacity
+        #initialize spaces
         
 
 
@@ -50,9 +68,6 @@ class HashTable:
         # Your code here
         return len(self.capacity)
         
-        
-
-
 
     def get_load_factor(self):
         """
@@ -107,10 +122,10 @@ class HashTable:
         """
         # Your code here
         slot = self.hash_index(key)
+        #find index
+        #insert val at index
         self.capacity[slot]= HashTableEntry(key, value)
-
-
-
+        #need to increment?
 
     def delete(self, key):
         """
@@ -122,6 +137,7 @@ class HashTable:
         """
         # Your code here
         self.put(key, None)
+        #need to deincrement?
 
 
     def get(self, key):
