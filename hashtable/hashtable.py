@@ -7,11 +7,12 @@ class LL:
     def __init__(self):
         self.head = None
 
+#add to hed node
     def add_to_head(self, node):
         node.next = self.head
         self.head =node
 
-    def get(self, value):
+    def ll_get(self, value):
         current =self.head 
         #check for head
         #if val is head, ret
@@ -24,6 +25,17 @@ class LL:
             current.next
             return None
 
+    def ll_delete(self, value):
+        current = self.head
+#search for value
+#if value on next is value delete
+#reset next node
+        while current.next is not None:
+            if current.next.value == value:
+                delete = current.next
+                current.next.next
+                return delete
+                current=current.next
 
 
 class HashTableEntry:
