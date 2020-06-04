@@ -1,3 +1,14 @@
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+
+class LL:
+    def __init__(self):
+        self.head = None
+
+
+
 class HashTableEntry:
     """
     Linked List hash table key/value pair
@@ -23,6 +34,7 @@ class HashTable:
     def __init__(self, capacity):
         # Your code here
         self.capacity = [None] * capacity
+        
 
 
     def get_num_slots(self):
@@ -49,6 +61,7 @@ class HashTable:
         Implement this.
         """
         # Your code here
+        
 
 
     def fnv1(self, key):
@@ -98,6 +111,7 @@ class HashTable:
 
 
 
+
     def delete(self, key):
         """
         Remove the value stored with the given key.
@@ -107,7 +121,7 @@ class HashTable:
         Implement this.
         """
         # Your code here
-        put(key, None)
+        self.put(key, None)
 
 
     def get(self, key):
@@ -136,6 +150,7 @@ class HashTable:
         Implement this.
         """
         # Your code here
+        
 
 
 
