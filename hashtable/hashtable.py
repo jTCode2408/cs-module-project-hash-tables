@@ -217,6 +217,14 @@ class HashTable:
         Implement this.
         """
         # Your code here
+        current_capacity = self.capacity
+        self.capacity = [None] * resized
+
+        for i in current_capacity:
+            current = i
+            while current is not None:
+                self.put(current.key, current.value)
+                current =current.next
         
 
 
