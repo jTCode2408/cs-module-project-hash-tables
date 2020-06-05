@@ -200,13 +200,29 @@ class HashTable:
         Implement this.
         """
         # Your code here
+        #slot = self.hash_index(key)
+        #hash_entry = self.capacity[slot]
+        #if hash_entry is not None:
+            #return hash_entry.value
+
+        #return None
+
+####LL VERSION ####
         slot = self.hash_index(key)
         hash_entry = self.capacity[slot]
 
-        if hash_entry is not None:
-            return hash_entry.value
+        if hash_entry:
+            if hash_entry.key is key:
+                return self.capacity[slot].value
+            else:
+                while hash_entry is not None:
+                    if hash_entry.key is key:
+                        return hash_entry.value
+                    hash_entry= hash_entry.next
+                return None
 
-        return None
+
+
 
 
     def resize(self, new_capacity):
