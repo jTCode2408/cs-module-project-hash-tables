@@ -64,6 +64,7 @@ class HashTable:
         # Your code here
         self.capacity = [None] * capacity
         #initialize spaces
+        self.stored = 0
         
 
 
@@ -77,7 +78,7 @@ class HashTable:
 
         Implement this.
         """
-        # Your code here
+        # Your code 
         return len(self.capacity)
         
 
@@ -88,6 +89,8 @@ class HashTable:
         Implement this.
         """
         # Your code here
+        load = self.stored / self.get_num_slots()
+        return load
         
 
 
@@ -123,6 +126,7 @@ class HashTable:
         """
         #return self.fnv1(key) % len(self.capacity)
         return self.djb2(key) % len(self.capacity)
+        #return self.dbj2(key) % self.get_num_slots()
 
     def put(self, key, value):
         """
@@ -132,12 +136,47 @@ class HashTable:
 
         Implement this.
         """
-        # Your code here
-        slot = self.hash_index(key)
         #find index
         #insert val at index
-        self.capacity[slot]= HashTableEntry(key, value)
+
+        #slot = self.hash_index(key)
+        #self.capacity[slot]= HashTableEntry(key, value)
         #need to increment?
+
+        #####LL VERSION ###
+        #increment storage by 1
+        #get index, insert value again
+        #check if space is empty
+        #if empty, insert/
+        ##CHECK LOAD
+        ##*When load factor increases above 0.7, automatically rehash the table to double its previous size* ##
+        #if not empty:
+        #check for val in list
+        #use ll to insert 
+        #insert at next node
+
+        self.stored +=1
+        slot= self.hash_index(key)
+        adding = HashTableEntry(key,value)
+
+        if self.capacity[slot] is None:
+            self.capacity[slot] = adding
+
+        else:
+            current=self.capacity[slot]
+
+            if current:
+                if current.key is key:
+                    self.capacity[slot] = adding
+                else:
+                    while current is not None:
+                        if current.key is key:
+                            self.capacity[slot] = adding
+                            current = current.next
+                    return None
+        
+
+
 
     def delete(self, key):
         """
