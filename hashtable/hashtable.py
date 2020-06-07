@@ -85,8 +85,8 @@ class HashTable:
         Implement this.
         """
         # Your code here
-        load = self.storage / self.get_num_slots()
-        return load
+        load_factor = self.storage / self.get_num_slots()
+        return load_factor
         
 
 
@@ -170,7 +170,6 @@ class HashTable:
                         if current.key == key:
                             self.capacity[slot] = adding
                             if self.get_load_factor() > .7:
-                                print(self.get_load_factor())
                                 self.resize(len(self.capacity) * 2)
                                 current = current.next
                     return None
@@ -192,7 +191,7 @@ class HashTable:
         """
         # Your code here
         #self.put(key, None)
-        #need to deincrement?
+        #need to decrement?
 
     ####LL VERSION#####
     #check if empty
