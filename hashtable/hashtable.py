@@ -143,9 +143,9 @@ class HashTable:
         ##CHECK LOAD
         ##*When load factor increases above 0.7, automatically rehash the table to double its previous size* ##
         #if not empty:
-        #check for val in list
+        #check for key already in list to update
         #use ll to insert 
-        #insert at next node
+        #insert at head if not found
 
         self.storage += 1
         
@@ -174,7 +174,7 @@ class HashTable:
                                 current = current.next
                     return None
             
-            # head
+            # add to head
             adding.next = self.capacity[slot]
             self.capacity[slot] = adding
             if self.get_load_factor() > .7:
