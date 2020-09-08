@@ -1,5 +1,15 @@
+import re
+
 def word_count(s):
     # Your code here
+    dict = {}
+    for word in re.sub(r"[^a-zA-Z ']", ' ', s).lower().split():
+        if word in dict:
+            dict[word] +=1
+        else:
+            dict[word] =1
+    return dict
+
 
 
 
